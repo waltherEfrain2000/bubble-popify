@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bubble Popify</title>
+  <style>
+    /* Reset básico */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+      background: #fcebb7;
+    }
+
+    /* Animación de burbujas */
+    .bubble {
+      position: absolute;
+      bottom: -50px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      animation: rise 15s linear infinite;
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0) scale(1); opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+    }
+
+    /* Header */
+    header {
+      background: rgba(108,79,61,0.9);
+      color: #fff;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      width: 90%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo { font-size: 1.8em; font-weight: bold; }
+    nav ul { list-style: none; display: flex; }
+    nav ul li { margin-left: 20px; }
+    nav ul li a { color: #fff; text-decoration: none; font-weight: 500; transition: 0.3s; }
+    nav ul li a:hover { color: #f0c27b; }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 120px 20px 80px;
+      color: #fff;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero h1 { font-size: 3em; margin-bottom: 20px; text-shadow: 1px 1px 5px #000; }
+    .hero p { font-size: 1.3em; margin-bottom: 30px; text-shadow: 1px 1px 5px #000; }
+
+    .btn {
+      background: #fff; color: #6c4f3d; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s;
+    }
+    .btn:hover { background: #f0c27b; color: #fff; }
+
+    /* Sections */
+    section {
+      width: 90%; max-width: 900px; margin: 60px auto; text-align: center; position: relative; z-index: 10;
+    }
+    section h2 { font-size: 2em; margin-bottom: 20px; color: #6c4f3d; }
+    section p { font-size: 1.1em; margin-bottom: 15px; }
+
+    /* Download buttons */
+    .download .buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .download .btn.store { background: #6c4f3d; color: #fff; }
+    .download .btn.store:hover { background: #f0c27b; color: #333; }
+
+    /* Footer */
+    footer { background: #6c4f3d; color: #fff; text-align: center; padding: 20px 0; margin-top: 60px; position: relative; z-index: 10; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 10px; }
+      .hero h1 { font-size: 2em; }
+      .hero p { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Burbujas -->
+  <script>
+    const colors = ['rgba(255,255,255,0.4)','rgba(255,255,255,0.6)','rgba(255,255,255,0.8)'];
+    for(let i=0;i<30;i++){
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      const size = Math.random()*40+10;
+      bubble.style.width = size+'px';
+      bubble.style.height = size+'px';
+      bubble.style.left = Math.random()*100+'vw';
+      bubble.style.background = colors[Math.floor(Math.random()*colors.length)];
+      bubble.style.animationDuration = (Math.random()*10+10)+'s';
+      bubble.style.animationDelay = (Math.random()*5)+'s';
+      document.body.appendChild(bubble);
+    }
+  </script>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">Bubble Popify</div>
+      <ul class="menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#download">Download</a></li>
+        <li><a href="#privacy">Privacy Policy</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Relax and Pop Bubbles!</h1>
+    <p>Enjoy popping bubbles with relaxing sounds in Bubble Popify. Available on Play Store and App Store.</p>
+    <a href="#download" class="btn">Download Now</a>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Bubble Popify</h2>
+    <p>Bubble Popify is a fun and relaxing mobile game designed to help you unwind. Tap, pop, and enjoy soothing bubble sounds anytime!</p>
+  </section>
+
+  <!-- Download -->
+  <section id="download">
+    <h2>Download the App</h2>
+    <div class="buttons">
+      <a href="#" class="btn store">Google Play</a>
+      <a href="#" class="btn store">App Store</a>
+    </div>
+  </section>
+
+  <!-- Privacy Policy -->
+  <section id="privacy">
+    <h2>Privacy Policy</h2>
+    <p>Check our full privacy policy <a href="privacy-policy.html" target="_blank">here</a>.</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <strong>weaudev.contact@gmail.com</strong></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Bubble Popify. All rights reserved.</p>
+  </footer>
+</body>
+</html>
